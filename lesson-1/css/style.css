@@ -1,0 +1,24 @@
+
+
+.cookie-wrapper{
+	position: fixed;
+	width: 512px;
+	height: 512px;
+}
+
+.cookie{
+	transform: scale(0.8);
+	transition: transform 0.3s;
+	
+}
+.cookie-wrapper:hover .cookie{
+	transform: scale(0.9);
+}
+.cookie-wrapper:active .cookie{
+	transform: scale(1);
+}
+
+.del-item{
+	float: right;
+	color: red;
+}

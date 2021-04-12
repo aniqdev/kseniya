@@ -1,0 +1,64 @@
+
+.scores-wrapper{
+	font-size: 34px;
+    text-align: center;
+    color: mediumaquamarine;
+	margin-top: 50px;
+}
+
+.frog-wrapper{
+	outline: 1px solid lightcoral;
+	position: relative;
+}
+
+.frog-wrapper .frog{
+	transition: all 0.3s;
+	width: 100%;
+}
+
+.frog-wrapper:hover .frog{
+	filter: drop-shadow(5px 5px 10px rgba(0,0,0,0.5));	
+}
+.frog-wrapper:active .frog{
+	transform: translateY(-5px);
+}
+
+.score-el{
+	position: absolute;
+	color:  white;
+	font-size: 1.5em;
+	font-weight: bold;
+	user-select: none;
+	opacity: 0;
+    animation: bubble 1.5s ease-out;
+}
+
+#click_layer{
+	width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    z-index: 2;
+}
+
+@keyframes bubble{
+	from{
+		margin-top: 0;
+		opacity: 1;
+	}
+	50%{
+		opacity: 1;
+	}
+	to{
+		margin-top: -60px;
+		opacity: 0;
+	}
+}
+
+.meal.{
+	background: #58bac3;
+}
+
+.meal.used{
+    background: #709194;
+}
