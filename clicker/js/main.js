@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 	const audioObj = new Audio('mp3/clickb1.mp3');
 	let score_count = 0
-	// let meal = 'fly'
 	let scores_per_click = 1
 
 
@@ -21,43 +20,58 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 	if(frog) frog.ondragstart = function() { return false } // если картинка
 
-	click_layer.addEventListener('click', function(event) {
+	click_layer.addEventListener('click', function(event) { // клик по жабе
 		audioObj.play()
 		show_score(frog_wrapper, event) 
 		check_meal()
 	})
 
-	meal_btns.addEventListener('click', function(event) {
-		if (event.target.tagName !== 'BUTTON') return false
-
-		const button = event.target
-
-		scores_per_click = +button.name
-		meal_elem.innerText = button.value + ':' + button.name
-
-		const price = button.dataset.price
-		cl(price)
-		button.classList.add('used')
-		button.setAttribute('disabled','disabled')
-		meal_btns_arr = meal_btns.querySelectorAll('.meal:disabled:not(.used)')
-
-		// meal_btns_arr.forEach(function(meal_btn) {
-		// 	const price = meal_btn.dataset.price
-		// 	if (score_count >= price) {
-		// 		meal_btn.removeAttribute('disabled')
-		// 		meal_btns_arr = meal_btns.querySelectorAll('.meal:disabled')
-		// 	}
-		// })
+	meal_btns.addEventListener('click', function(event) { // клик по еде
+		buy_meal_click(event)
+		check_meal()
 	})
 
+
+
+function buy_meal_click(event){
+	if (event.target.tagName !== 'BUTTON') return false
+
+	const button = event.target
+
+	scores_per_click = +button.name
+	meal_elem.innerText = button.value + ':' + button.name
+
+	const price = +button.dataset.price
+	cl(price)
+	score_count = score_count - price
+	scores_elem.innerText = score_count
+	button.classList.add('used')
+	button.setAttribute('disabled','disabled')
+	meal_btns_arr = meal_btns.querySelectorAll('.meal:not(.used)')
+
+	meal_btns_arr.forEach(function(meal_btn) {
+		const btn_price = +meal_btn.dataset.price
+		// cl('btn_price',btn_price)
+		if (btn_price < price) {
+			// cl('btn_price IF',btn_price, price)
+			meal_btn.classList.add('used')
+			meal_btn.setAttribute('disabled','disabled')
+			meal_btns_arr = meal_btns.querySelectorAll('.meal:not(.used)')
+		}
+	})
+}
 
 function check_meal() {
 	if(!meal_btns_arr.length) return false
 	meal_btns_arr.forEach(function(meal_btn) {
 		const price = meal_btn.dataset.price
 		if (score_count >= price) {
+			// cl('if')
 			meal_btn.removeAttribute('disabled')
-			meal_btns_arr = meal_btns.querySelectorAll('.meal:disabled:not(.used)')
+			// meal_btns_arr = meal_btns.querySelectorAll('.meal:disabled:not(.used)')
+		}else{
+			// cl('else')
+			meal_btn.setAttribute('disabled','disabled')
 		}
 	})
 }
