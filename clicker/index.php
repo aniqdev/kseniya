@@ -12,25 +12,45 @@
 </head>
 <body>
 
+	<div class="screensaver">
+		<h1>Frog clicker</h1>
+		<button id="start_game_btn">Start game</button>
+	</div>
+
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-4">
 				<div class="scores-wrapper">
-					<span id="scores">0</span>
+					<span id="scores"></span>
 					scores
 				</div>
-				<div class="frog-wrapper" id="frog_wrapper">
+				<div class="frog-wrapper" id="frog_wrapper" cursor="fly">
 					<img src="images/frog-sm.png" alt="" class="frog" id="frog">
 					<div id="click_layer"></div>
 				</div>
 			</div>
-			<div class="col-sm-4"></div>
+			<div class="col-sm-4 text-center">
+				<div class="btn-group my-3" role="group" aria-label="Basic mixed styles example">
+				  <button type="button" class="btn btn-danger" id="reset_btn">Reset game</button>
+				  <!-- <button type="button" class="btn btn-warning">Middle</button> -->
+				  <button type="button" class="btn btn-success" id="toggle_sound">Sound Off</button>
+				</div>
+				<div class="text-start">
+					<label for="volume_inp" class="form-label">Volume</label>
+					<input type="range" class="form-range" id="volume_inp">
+				</div>
+				<br>
+				<textarea class="form-control" readonly name="sample" id="game_console" cols="30" rows="10"></textarea>
+			</div>
 			<div class="col-sm-4">
-				<h3>meal (<span id="meal_name">fly:1</span>)</h3>
+				<h3>meal (<span id="meal_title">fly:1</span>)</h3>
 				<div id="meal_btns">
-					<button disabled data-price="5" name="2" value="worm" class="btn btn-secondary meal">buy worm</button>
-					<button disabled data-price="10" name="3" value="caterpillar" class="btn btn-secondary meal">buy caterpillar</button>
-					<button disabled data-price="15" name="4" value="butterfly" class="btn btn-secondary meal">buy butterfly</button>
+
+				</div>
+				<hr>
+				<h3>speed (<span id="speed_title">fly:1</span>)</h3>
+				<div id="speed_btns">
+
 				</div>
 			</div>
 		</div>

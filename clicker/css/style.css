@@ -11,6 +11,19 @@
 	position: relative;
 }
 
+.frog-wrapper[cursor="fly"]{
+	cursor:  url('../images/fly.png') 15 0, auto;
+}
+.frog-wrapper[cursor="worm"]{
+	cursor:  url('../images/fly.png') 15 0, auto;
+}
+.frog-wrapper[cursor="caterpillar"]{
+	cursor:  url('../images/fly.png') 15 0, auto;
+}
+.frog-wrapper[cursor="butterfly"]{
+	cursor:  url('../images/b-fly-sm.png') 23 0, auto;
+}
+
 .frog-wrapper .frog{
 	transition: all 0.3s;
 	width: 100%;
@@ -56,10 +69,56 @@
 	}
 }
 
-.meal.{
+.meal{
 	background: #58bac3;
+	margin-right: 6px;
+	margin-bottom: 6px;
 }
 
 .meal.used{
     background: #709194;
+}
+
+.screensaver{
+    position: fixed;
+    background: #4a4027;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.screensaver h1{
+    color: #fff;
+    font-size: 155px;
+    font-family: cursive;
+    text-shadow: 5px 5px 4px #82822d;
+}
+
+.screensaver button{
+	background: linear-gradient(to bottom, #bfd255 0%,#8eb92a 50%,#72aa00 51%,#9ecb2d 100%);
+	color: #fff;
+    font-size: 30px;
+    margin-top: 35px;
+    border: 0;
+    padding: 10px 40px;
+    font-weight: bold;
+    text-shadow: 2px 2px 3px #717171;
+}
+
+.screensaver.hide{
+	animation: hide-screensaver 1s linear;
+}
+
+@keyframes hide-screensaver{
+	0%{
+		opacity: 1;
+	}
+	100%{
+		opacity: 0;
+	}
 }
